@@ -4,42 +4,46 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Entity
-public class Car {
+public class Reservation {
     @Id
     @GeneratedValue
     private Long id;
 
     @NotNull
-    @Column(unique = true)
-    private String name;
+    private LocalDateTime dateFrom;
 
     @NotNull
-    @Column(length = 20)
-    private String gearBox;
+    private LocalDateTime dateTo;
 
     @NotNull
-    private Long numberOfDoors;
+    private String userName;
 
     @NotNull
-    private Long numberOfPersons;
+    private String  userSurname;
 
     @NotNull
-    private Boolean AirConditioning;
+    private String mail;
 
     @NotNull
-    private BigDecimal pricePerDay;
+    private String phone;
 
     @NotNull
-    @ManyToOne
-    @JoinColumn
-    private Long groupId;
+    private Car car;
+
+    @NotNull
+    private BigDecimal toPay;
+
+
 
 }

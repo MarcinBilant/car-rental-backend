@@ -4,10 +4,14 @@ package com.kodilla.carrentalbackend.dto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.math.BigDecimal;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
+@Setter
 public class CarDto {
     private Long id;
     private String name;
@@ -15,6 +19,7 @@ public class CarDto {
     private Long numberOfDoors;
     private Long numberOfPersons;
     private Boolean AirConditioning;
+    private BigDecimal pricePerDay;
     private Long groupId;
 
 }

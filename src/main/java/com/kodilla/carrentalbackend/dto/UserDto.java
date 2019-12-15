@@ -9,8 +9,10 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class GroupDto {
+public class UserDto {
     private Long id;
-    private String name;
-    private String description;
+    private String userName;
+    private String userSurname;
+    private String mail;
+    private String phone;
 }
