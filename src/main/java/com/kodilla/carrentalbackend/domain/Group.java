@@ -4,6 +4,7 @@ package com.kodilla.carrentalbackend.domain;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.context.annotation.Configuration;
 
 import javax.persistence.*;
@@ -14,6 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
+@Setter
 @Entity
 public class Group {
     @Id
@@ -29,7 +31,7 @@ public class Group {
 
     @OneToMany(
             targetEntity = Car.class,
-            mappedBy ="groupId",
+            mappedBy ="group",
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY
     )

@@ -15,7 +15,7 @@ public class CarMapper {
                 carDto.getNumberOfPersons(),
                 carDto.getAirConditioning(),
                 carDto.getPricePerDay(),
-                carDto.getGroupId()
+                carDto.getGroup()
         );
     }
     public CarDto mapToCarDto(final Car car) {
@@ -27,7 +27,7 @@ public class CarMapper {
                 car.getNumberOfPersons(),
                 car.getAirConditioning(),
                 car.getPricePerDay(),
-                car.getGroupId()
+                car.getGroup()
         );
     }
 }
