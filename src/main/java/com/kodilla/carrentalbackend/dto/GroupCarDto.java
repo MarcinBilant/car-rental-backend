@@ -1,15 +1,18 @@
 package com.kodilla.carrentalbackend.dto;
 
+import com.kodilla.carrentalbackend.domain.Car;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-public class GroupDto {
+public class GroupCarDto {
     private Long id;
     private String name;
     private String description;

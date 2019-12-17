@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.context.annotation.Configuration;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -17,13 +16,12 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-public class Group {
+public class GroupCar {
     @Id
     @GeneratedValue
     private Long id;
 
     @NotNull
-    @Column(unique = true)
     private String name;
 
     @NotNull
@@ -31,7 +29,7 @@ public class Group {
 
     @OneToMany(
             targetEntity = Car.class,
-            mappedBy ="group",
+            mappedBy ="groupId",
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY
     )

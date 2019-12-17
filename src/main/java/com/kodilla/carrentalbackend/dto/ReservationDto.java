@@ -16,13 +16,13 @@ import java.time.LocalDateTime;
 @Setter
 public class ReservationDto {
     private Long id;
-    private LocalDateTime dateFrom;
-    private LocalDateTime dateTo;
+    private LocalDate dateFrom;
+    private LocalDate dateTo;
     private String userName;
     private String userSurname;
     private String mail;
     private String phone;
-    private Car car;
+    private Car carId;
     private BigDecimal toPay;
 
 }

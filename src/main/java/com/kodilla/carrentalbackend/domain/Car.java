@@ -5,9 +5,9 @@ import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 @Entity
@@ -36,15 +36,14 @@ public class Car {
     @NotNull
     private BigDecimal pricePerDay;
 
-
     @NotNull
     @ManyToOne
-    @JoinColumn
-    private Group group;
+    @JoinColumn(name = "groupId")
+    private GroupCar groupId;
 
 
 
-    @Builder
+   /* @Builder
     public Car (Long id, String name, String gearBox, Long numberOfDoors, Long numberOfPersons, Boolean airConditioning,
                 BigDecimal pricePerDay, Group group) {
         this.id = id;
@@ -55,7 +54,7 @@ public class Car {
         this.airConditioning = airConditioning;
         this.pricePerDay = pricePerDay;
         this.group = group;
-    }
+    }*/
 
 
 

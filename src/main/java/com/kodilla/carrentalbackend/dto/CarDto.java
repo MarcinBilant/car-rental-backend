@@ -1,7 +1,7 @@
 package com.kodilla.carrentalbackend.dto;
 
 
-import com.kodilla.carrentalbackend.domain.Group;
+import com.kodilla.carrentalbackend.domain.GroupCar;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,6 +21,6 @@ public class CarDto {
     private Long numberOfPersons;
     private Boolean AirConditioning;
     private BigDecimal pricePerDay;
-    private Group group;
+    private GroupCar groupId;
 
 }
