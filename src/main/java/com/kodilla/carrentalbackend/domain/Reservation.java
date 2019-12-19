@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import net.bytebuddy.dynamic.scaffold.FieldLocator;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -39,10 +40,9 @@ public class Reservation {
     @NotNull
     private String phone;
 
-    @NotNull
-    @OneToOne
-    @JoinColumn(name = "Car_Id")
-    private Car carId;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "CAR_ID")
+    private Car car;
 
     @NotNull
     private BigDecimal toPay;

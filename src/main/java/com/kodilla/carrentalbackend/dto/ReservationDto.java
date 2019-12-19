@@ -22,7 +22,7 @@ public class ReservationDto {
     private String userSurname;
     private String mail;
     private String phone;
-    private Car carId;
+    private Long carId;
     private BigDecimal toPay;
 
 }

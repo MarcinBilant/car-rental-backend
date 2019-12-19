@@ -21,6 +21,6 @@ public class CarDto {
     private Long numberOfPersons;
     private Boolean AirConditioning;
     private BigDecimal pricePerDay;
-    private GroupCar groupId;
+    private Long groupId;
 
 }

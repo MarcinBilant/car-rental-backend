@@ -20,7 +20,7 @@ public class ReservationMapper {
                 reservationDto.getUserSurname(),
                 reservationDto.getMail(),
                 reservationDto.getPhone(),
-                reservationDto.getCarId(),
+                null,
                 reservationDto.getToPay()
         );
     }
@@ -33,21 +33,21 @@ public class ReservationMapper {
                 reservation.getUserSurname(),
                 reservation.getMail(),
                 reservation.getPhone(),
-                reservation.getCarId(),
+                reservation.getCar().getId(),
                 reservation.getToPay()
         );
     }
     public List<ReservationDto> mapToReservationDtoList(final List<Reservation> reservationList) {
         return reservationList.stream()
                 .map(r-> new ReservationDto(r.getId(),r.getDateFrom(),r.getDateTo(),r.getUserName(),
-                        r.getUserSurname(),r.getMail(),r.getPhone(),r.getCarId(),r.getToPay()))
+                        r.getUserSurname(),r.getMail(),r.getPhone(),r.getCar().getId(),r.getToPay()))
                 .collect(Collectors.toList());
     }
 
     public List<Reservation> mapToReservationList(final List<ReservationDto> reservationDtoList) {
         return reservationDtoList.stream()
                 .map(r-> new Reservation(r.getId(),r.getDateFrom(),r.getDateTo(),r.getUserName(),
-                        r.getUserSurname(),r.getMail(),r.getPhone(),r.getCarId(),r.getToPay()))
+                        r.getUserSurname(),r.getMail(),r.getPhone(),null,r.getToPay()))
                 .collect(Collectors.toList());
     }
 }
