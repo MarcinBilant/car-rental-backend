@@ -1,10 +1,7 @@
 package com.kodilla.carrentalbackend.domain;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -15,6 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
+@Builder
 @Entity
 public class GroupCar {
     @Id
@@ -27,12 +25,12 @@ public class GroupCar {
     @NotNull
     private String description;
 
-    @OneToMany(
+    /*@OneToMany(
             targetEntity = Car.class,
             mappedBy ="groupId",
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY
     )
-    private List<Car> cars = new ArrayList<>();
+    private List<Car> cars = new ArrayList<>();*/
 
 }

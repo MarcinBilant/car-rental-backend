@@ -2,10 +2,7 @@ package com.kodilla.carrentalbackend.dto;
 
 
 import com.kodilla.carrentalbackend.domain.GroupCar;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 
@@ -13,13 +10,14 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @Getter
 @Setter
+@Builder
 public class CarDto {
     private Long id;
     private String name;
     private String gearBox;
     private Long numberOfDoors;
     private Long numberOfPersons;
-    private Boolean AirConditioning;
+    private Boolean airConditioning;
     private BigDecimal pricePerDay;
     private Long groupId;
 

@@ -12,42 +12,31 @@ import java.util.stream.Collectors;
 public class ReservationMapper {
 
     public Reservation mapToReservation(final ReservationDto reservationDto) {
-        return new Reservation(
-                reservationDto.getId(),
-                reservationDto.getDateFrom(),
-                reservationDto.getDateTo(),
-                reservationDto.getUserName(),
-                reservationDto.getUserSurname(),
-                reservationDto.getMail(),
-                reservationDto.getPhone(),
-                null,
-                reservationDto.getToPay()
-        );
-    }
-    public ReservationDto mapToReservationDto(final Reservation reservation) {
-        return new ReservationDto(
-                reservation.getId(),
-                reservation.getDateFrom(),
-                reservation.getDateTo(),
-                reservation.getUserName(),
-                reservation.getUserSurname(),
-                reservation.getMail(),
-                reservation.getPhone(),
-                reservation.getCar().getId(),
-                reservation.getToPay()
-        );
-    }
-    public List<ReservationDto> mapToReservationDtoList(final List<Reservation> reservationList) {
-        return reservationList.stream()
-                .map(r-> new ReservationDto(r.getId(),r.getDateFrom(),r.getDateTo(),r.getUserName(),
-                        r.getUserSurname(),r.getMail(),r.getPhone(),r.getCar().getId(),r.getToPay()))
-                .collect(Collectors.toList());
+        return Reservation.builder()
+                .id(reservationDto.getId())
+                .dateFrom(reservationDto.getDateFrom())
+                .dateTo(reservationDto.getDateTo())
+                .toPay(reservationDto.getToPay())
+                .build();
     }
 
-    public List<Reservation> mapToReservationList(final List<ReservationDto> reservationDtoList) {
-        return reservationDtoList.stream()
-                .map(r-> new Reservation(r.getId(),r.getDateFrom(),r.getDateTo(),r.getUserName(),
-                        r.getUserSurname(),r.getMail(),r.getPhone(),null,r.getToPay()))
+    public ReservationDto mapToReservationDto(final Reservation reservation) {
+        return ReservationDto.builder()
+                .id(reservation.getId())
+                .dateFrom(reservation.getDateFrom())
+                .dateTo(reservation.getDateTo())
+                .toPay(reservation.getToPay())
+                .build();
+    }
+
+    public List<ReservationDto> mapToReservationDtoList(final List<Reservation> reservationList) {
+        return reservationList.stream()
+                .map(r-> ReservationDto.builder()
+                .id(r.getId())
+                .dateFrom(r.getDateFrom())
+                .dateTo(r.getDateTo())
+                .toPay(r.getToPay())
+                .build())
                 .collect(Collectors.toList());
     }
 }

@@ -1,9 +1,13 @@
 package com.kodilla.carrentalbackend.service;
 
 import com.kodilla.carrentalbackend.domain.Car;
+import com.kodilla.carrentalbackend.domain.GroupCar;
 import com.kodilla.carrentalbackend.domain.Reservation;
+import com.kodilla.carrentalbackend.domain.User;
 import com.kodilla.carrentalbackend.repository.CarRepository;
+import com.kodilla.carrentalbackend.repository.GroupCarRepository;
 import com.kodilla.carrentalbackend.repository.ReservationRepository;
+import com.kodilla.carrentalbackend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +20,10 @@ public class DbService {
     ReservationRepository reservationRepository;
     @Autowired
     CarRepository carRepository;
+    @Autowired
+    UserRepository userRepository;
+    @Autowired
+    GroupCarRepository groupCarRepository;
 
 
     public List<Reservation> getAllReservation() {
@@ -40,6 +48,46 @@ public class DbService {
 
     public Optional<Car> getCar(final Long id) {
         return carRepository.findById(id);
+    }
+
+    public Car saveCar(final Car car) {
+        return carRepository.save(car);
+    }
+
+    public void deleteCar(final Long id) {
+        carRepository.deleteById(id);
+    }
+
+    public User saveUser(final User user) {
+        return userRepository.save(user);
+    }
+
+    public void deleteUser(final Long id) {
+        userRepository.deleteById(id);
+    }
+
+    public Optional<User> getUser(final Long id) {
+        return userRepository.findById(id);
+    }
+
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
+    }
+
+    public GroupCar saveGroupCar(final GroupCar groupCar) {
+        return groupCarRepository.save(groupCar);
+    }
+
+    public void deleteGroupCar(final Long id) {
+        groupCarRepository.deleteById(id);
+    }
+
+    public Optional<GroupCar> getGroupCar(final Long id) {
+        return groupCarRepository.findById(id);
+    }
+
+    public List<GroupCar> getAllGroupCars() {
+        return groupCarRepository.findAll();
     }
 
 }

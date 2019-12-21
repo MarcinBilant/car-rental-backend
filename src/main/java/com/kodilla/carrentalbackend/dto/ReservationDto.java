@@ -1,10 +1,8 @@
 package com.kodilla.carrentalbackend.dto;
 
 import com.kodilla.carrentalbackend.domain.Car;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.kodilla.carrentalbackend.domain.User;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -14,14 +12,12 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Getter
 @Setter
+@Builder
 public class ReservationDto {
     private Long id;
     private LocalDate dateFrom;
     private LocalDate dateTo;
-    private String userName;
-    private String userSurname;
-    private String mail;
-    private String phone;
+    private Long userId;
     private Long carId;
     private BigDecimal toPay;
 
