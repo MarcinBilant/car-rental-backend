@@ -3,6 +3,7 @@ package com.kodilla.carrentalbackend.mapper;
 import com.kodilla.carrentalbackend.domain.Car;
 import com.kodilla.carrentalbackend.domain.GroupCar;
 import com.kodilla.carrentalbackend.dto.CarDto;
+import com.kodilla.carrentalbackend.dto.GroupCarDto;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
