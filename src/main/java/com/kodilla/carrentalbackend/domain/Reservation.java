@@ -1,14 +1,11 @@
 package com.kodilla.carrentalbackend.domain;
 
 import lombok.*;
-import net.bytebuddy.dynamic.scaffold.FieldLocator;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @NoArgsConstructor
 @AllArgsConstructor

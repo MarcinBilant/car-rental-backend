@@ -1,6 +1,8 @@
 package com.kodilla.carrentalbackend;
 
 import com.kodilla.carrentalbackend.domain.User;
+import com.kodilla.carrentalbackend.dto.UserDto;
+import com.kodilla.carrentalbackend.mapper.UserMapper;
 import com.kodilla.carrentalbackend.service.DbService;
 import org.junit.Assert;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +18,9 @@ import java.util.Optional;
 @SpringBootTest
 public class UserTestSuite {
     @Autowired
-    DbService service;
+    private DbService service;
+    @Autowired
+    private UserMapper userMapper;
 
     @Test
     public void testUserSave() {
@@ -88,11 +92,36 @@ public class UserTestSuite {
         List<User> readUsers = service.getAllUsers();
 
         //Then
-        Assert.assertEquals(2, readUsers.size());
+        Assert.assertEquals(5, readUsers.size());
 
         //CleanUp
         service.deleteUser(id3);
         service.deleteUser(id4);
+    }
+    @Test
+    public void testUserDto() {
+        //Given
+        User user1 = User.builder()
+                .id(50L)
+                .userName("Krzysiek")
+                .userSurname("Kowalski")
+                .mail("krzysiek@kowalski.com")
+                .phone("456989321")
+                .reservations(null)
+                .build();
+        //User user1 = new User(50L,"Krzysiek","Kowalski","krzysiek@kowalski.com",
+          //      "456989321",null);
+        //When
+        User user2 = service.saveUser(user1);
+
+        //Then
+        Long id = user2.getId();
+        UserDto userDto = userMapper.mapToUserDto(user2);
+        userDto.setUserName("Marek");
+        Assert.assertEquals("Marek", userDto.getUserName());
+
+        //CleanUp
+        service.deleteUser(id);
     }
 
 }

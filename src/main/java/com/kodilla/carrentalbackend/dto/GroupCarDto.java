@@ -1,9 +1,7 @@
 package com.kodilla.carrentalbackend.dto;
 
-import com.kodilla.carrentalbackend.domain.Car;
 import lombok.*;
 
-import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor

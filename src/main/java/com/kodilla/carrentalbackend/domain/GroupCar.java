@@ -5,8 +5,6 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.ArrayList;
-import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -25,12 +23,5 @@ public class GroupCar {
     @NotNull
     private String description;
 
-    /*@OneToMany(
-            targetEntity = Car.class,
-            mappedBy ="groupId",
-            cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY
-    )
-    private List<Car> cars = new ArrayList<>();*/
 
 }

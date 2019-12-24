@@ -1,6 +1,5 @@
 package com.kodilla.carrentalbackend.repository;
 
-import com.kodilla.carrentalbackend.domain.Reservation;
 import com.kodilla.carrentalbackend.domain.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

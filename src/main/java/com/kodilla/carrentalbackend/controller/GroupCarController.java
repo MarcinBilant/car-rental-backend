@@ -24,7 +24,7 @@ public class GroupCarController {
         service.saveGroupCar(groupCarMapper.mapToGroupCar(groupCarDto));
     }
 
-    @RequestMapping(method = RequestMethod.PUT, value = "/groups")
+    @RequestMapping(method = RequestMethod.PUT, value = "/groups", consumes = APPLICATION_JSON_VALUE)
     public GroupCarDto updateGroupCar(@RequestBody GroupCarDto groupCarDto) {
         return groupCarMapper.mapToGroupCarDto((service.saveGroupCar(groupCarMapper.mapToGroupCar(groupCarDto))));
     }

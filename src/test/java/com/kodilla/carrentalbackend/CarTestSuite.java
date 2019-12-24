@@ -1,6 +1,8 @@
 package com.kodilla.carrentalbackend;
 
 import com.kodilla.carrentalbackend.domain.Car;
+import com.kodilla.carrentalbackend.dto.CarDto;
+import com.kodilla.carrentalbackend.mapper.CarMapper;
 import com.kodilla.carrentalbackend.service.DbService;
 import org.junit.Assert;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +19,9 @@ import java.util.Optional;
 @SpringBootTest
 public class CarTestSuite {
     @Autowired
-    DbService service;
+    private DbService service;
+    @Autowired
+    private CarMapper carMapper;
 
     @Test
     public void testCarSave() {
@@ -73,11 +77,11 @@ public class CarTestSuite {
     }
 
     @Test
-    public void TestGroupCarGetAll() {
+    public void TestCarGetAll() {
         //Given
         Car car1 = new Car(1L, "Toyota Aygo","manualna",3L,4L,
                 true,new BigDecimal(15),null,null);
-        Car car2 = new Car(1L, "Fiat 500","automatyczna",3L,4L,
+        Car car2 = new Car(2L, "Fiat 500","automatyczna",3L,4L,
                 true,new BigDecimal(15),null,null);
 
         Car car3 = service.saveCar(car1);
@@ -94,5 +98,32 @@ public class CarTestSuite {
         //CleanUp
         service.deleteCar(id3);
         service.deleteCar(id4);
+    }
+    @Test
+    public void testCarDtoMap() {
+        //Given
+        Car car1 = Car.builder()
+                .id(1L)
+                .name("Toyota Aygo")
+                .gearBox("manualna")
+                .numberOfDoors(3L)
+                .numberOfPersons(4L)
+                .airConditioning(true)
+                .pricePerDay(new BigDecimal(15))
+                .groupId(null)
+                .reservations(null)
+                .build();
+
+        //When
+        Car car2 = service.saveCar(car1);
+
+        //Then
+        Long id = car2.getId();
+        CarDto carDto = carMapper.mapToCarDto(car2);
+        carDto.setName("Toyota Yaris");
+        Assert.assertEquals("Toyota Yaris",carDto.getName());
+
+        //CleanUp
+        service.deleteCar(id);
     }
 }

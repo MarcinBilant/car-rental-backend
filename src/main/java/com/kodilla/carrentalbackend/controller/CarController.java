@@ -24,7 +24,7 @@ public class CarController {
         service.saveCar(carMapper.mapToCar(carDto));
     }
 
-    @RequestMapping(method = RequestMethod.PUT, value = "/cars")
+    @RequestMapping(method = RequestMethod.PUT, value = "/cars", consumes = APPLICATION_JSON_VALUE)
     public CarDto updateCar(@RequestBody CarDto carDto) {
         return carMapper.mapToCarDto(service.saveCar(carMapper.mapToCar(carDto)));
     }

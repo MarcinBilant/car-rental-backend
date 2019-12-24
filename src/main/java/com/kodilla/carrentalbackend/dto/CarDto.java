@@ -1,7 +1,6 @@
 package com.kodilla.carrentalbackend.dto;
 
 
-import com.kodilla.carrentalbackend.domain.GroupCar;
 import lombok.*;
 
 import java.math.BigDecimal;

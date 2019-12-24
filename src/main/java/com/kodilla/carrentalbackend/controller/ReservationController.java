@@ -24,7 +24,7 @@ public class ReservationController {
         service.saveReservation(reservationMapper.mapToReservation(reservationDto));
     }
 
-    @RequestMapping(method = RequestMethod.PUT, value = "/reservations")
+    @RequestMapping(method = RequestMethod.PUT, value = "/reservations", consumes = APPLICATION_JSON_VALUE)
     public ReservationDto updateReservations(@RequestBody ReservationDto reservationDto) {
         return reservationMapper.mapToReservationDto(service.saveReservation(reservationMapper.mapToReservation(reservationDto)));
     }

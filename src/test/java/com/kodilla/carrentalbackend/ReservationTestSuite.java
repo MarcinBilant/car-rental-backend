@@ -1,7 +1,8 @@
 package com.kodilla.carrentalbackend;
 
-import com.kodilla.carrentalbackend.domain.Car;
 import com.kodilla.carrentalbackend.domain.Reservation;
+import com.kodilla.carrentalbackend.dto.ReservationDto;
+import com.kodilla.carrentalbackend.mapper.ReservationMapper;
 import com.kodilla.carrentalbackend.service.DbService;
 import org.junit.Assert;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,9 @@ import java.util.Optional;
 @SpringBootTest
 public class ReservationTestSuite {
     @Autowired
-    DbService service;
+    private DbService service;
+    @Autowired
+    private ReservationMapper reservationMapper;
 
     @Test
     public void testReservationSave() {
@@ -96,5 +99,22 @@ public class ReservationTestSuite {
         //CleanUp
         service.deleteReservation(id3);
         service.deleteReservation(id4);
+    }
+    @Test
+    public void testReservationDto() {
+        //Given
+        Reservation reservation1 = new Reservation(1L, LocalDate.of(2019,12,19),
+                LocalDate.of(2019,12,22), null,null,new BigDecimal(45));
+        //When
+        Reservation reservation2 = service.saveReservation(reservation1);
+
+        //Then
+        Long id = reservation2.getId();
+        ReservationDto reservationDto = reservationMapper.mapToReservationDto(reservation2);
+        reservationDto.setDateFrom(LocalDate.of(2019,12,15));
+        Assert.assertEquals(LocalDate.of(2019,12,15),reservationDto.getDateFrom());
+
+        //CleanUp
+        service.deleteReservation(id);
     }
 }

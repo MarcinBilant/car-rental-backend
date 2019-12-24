@@ -24,7 +24,7 @@ public class UserController {
         service.saveUser(userMapper.mapToUser(userDto));
     }
 
-    @RequestMapping(method = RequestMethod.PUT, value = "/users")
+    @RequestMapping(method = RequestMethod.PUT, value = "/users", consumes = APPLICATION_JSON_VALUE)
     public UserDto updateUser(@RequestBody UserDto userDto) {
         return userMapper.mapToUserDto(service.saveUser(userMapper.mapToUser(userDto)));
     }

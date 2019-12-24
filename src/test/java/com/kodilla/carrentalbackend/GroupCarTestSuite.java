@@ -1,6 +1,8 @@
 package com.kodilla.carrentalbackend;
 
 import com.kodilla.carrentalbackend.domain.GroupCar;
+import com.kodilla.carrentalbackend.dto.GroupCarDto;
+import com.kodilla.carrentalbackend.mapper.GroupCarMapper;
 import com.kodilla.carrentalbackend.service.DbService;
 import org.junit.Assert;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +18,9 @@ import java.util.Optional;
 @SpringBootTest
 public class GroupCarTestSuite {
     @Autowired
-    DbService service;
+    private DbService service;
+    @Autowired
+    private GroupCarMapper groupCarMapper;
 
     @Test
     public void testGroupCarSave() {
@@ -87,6 +91,22 @@ public class GroupCarTestSuite {
         //CleanUp
         service.deleteGroupCar(id3);
         service.deleteGroupCar(id4);
+    }
+    @Test
+    public void testGroupCarDto() {
+        //Given
+        GroupCar groupCar1 = new GroupCar(1L,"Mini","Samochody miejskie i na krótkie wycieczki.");
+        //When
+        GroupCar groupCar2 = service.saveGroupCar(groupCar1);
+
+        //Then
+        Long id = groupCar2.getId();
+        GroupCarDto groupCarDto = groupCarMapper.mapToGroupCarDto(groupCar2);
+        groupCarDto.setName("Duży");
+        Assert.assertEquals("Duży", groupCarDto.getName());
+
+        //CleanUp
+        service.deleteGroupCar(id);
     }
 
 }

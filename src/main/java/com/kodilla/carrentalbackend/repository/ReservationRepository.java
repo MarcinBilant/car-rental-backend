@@ -23,4 +23,7 @@ public interface ReservationRepository extends CrudRepository<Reservation, Long>
 
     @Override
     Optional<Reservation> findById (Long id);
+
+    @Override
+    long count();
 }
